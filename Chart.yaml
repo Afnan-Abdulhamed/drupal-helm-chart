@@ -26,3 +26,8 @@ appVersion: "1.16.0"
 maintainers:
   - name: Afnan Abdelhameed
     url: https://github.com/bitnami/charts
+
+dependinces:
+  - name: mysql
+    version: 8.0.0
+    repoistory: https://charts.bitnami.com/bitnami

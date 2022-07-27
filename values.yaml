@@ -80,3 +80,11 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# Database Credentials.
+mysql:
+  auth:
+    database: ihf-education
+    rootPassword: root
+    username: edu-user
+    password: password

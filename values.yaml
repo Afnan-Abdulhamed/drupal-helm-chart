@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: quay.io/afnan_abdelhameed/ld-ihf-edu
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "1.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -86,5 +86,32 @@ mysql:
   auth:
     database: ihf-education
     rootPassword: root
-    username: edu-user
-    password: password
+
+#    username: edu-user
+#    password: password
+  primary:
+    livenessProbe:
+      initialDelaySeconds: 600
+  fullnameOverride: ihf-edu-mysql
+
+#  primary:
+#    service:
+#      type: NodePort
+#      nodePort: 32762
+#  fullnameOverride: creditagricole-mysql # change service name
+#  initdbScriptsConfigMap: cae-initdb-config
+
+#healthCheck:
+#  readiness: http://:32761/wp/wp-admin
+#  liveness: http://:32761/wp/wp-admin
+
+# Environment Variables
+env:
+ - name: "QUOTES_HOSTNAME"
+   value: "famousapp-mariadb"
+ - name: "QUOTES_DATABASE"
+   value: "quotesdb"
+ - name: "QUOTES_USER"
+   value: "quotes"
+ - name: "QUOTES_PASSWORD"
+   value: "quotespwd"

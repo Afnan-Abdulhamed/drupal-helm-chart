@@ -50,13 +50,4 @@ app.kubernetes.io/name: {{ include "drupal.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "drupal.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "drupal.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
 {{- end }}

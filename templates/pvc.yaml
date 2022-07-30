@@ -19,4 +19,3 @@ spec:
   resources:
     requests:
       storage: {{ .Values.persistence.size | quote }}
-  {{- include "drupal.storageClass" . | nindent 2 }}

@@ -85,16 +85,13 @@ mysql:
       nodePort: 32762
     livenessProbe:
       initialDelaySeconds: 600
+    # check https://dev.to/tylerauerbeck/deploying-bitnami-s-postgres-helm-chart-on-openshift-1mcl
+    # TODO: note to deploy multiple pods if you face same issue use secondary
     podSecurityContext:
       enabled: false
     containerSecurityContext:
       enabled: false
-  securityContext:
-    enabled: false
-  containerSecurityContext:
-    enabled: false
-  volumePermissions:
-    enabled: false
+
 
 #  primary:
 #    service:
@@ -107,7 +104,10 @@ mysql:
 #  readiness: http://:32761/wp/wp-admin
 #  liveness: http://:32761/wp/wp-admin
 
+
+# -------------------------------------
 # Environment Variables
+# -------------------------------------
 env:
  - name: "QUOTES_HOSTNAME"
    value: "famousapp-mariadb"
@@ -117,3 +117,31 @@ env:
    value: "quotes"
  - name: "QUOTES_PASSWORD"
    value: "quotespwd"
+
+
+# -------------------------------------
+# persistence volumes
+# -------------------------------------
+persistence:
+  ## @param persistence.storageClass PVC Storage Class for Drupal volume
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  storageClass: ""
+  ## @param persistence.accessModes PVC Access Mode for Drupal volume
+  ## If defined, PVC must be created manually before volume will be bound
+  ##
+  accessModes:
+    - ReadWriteOnce
+  ## @param persistence.size PVC Storage Request for Drupal volume
+  ##
+  size: 8Gi
+  ## @param persistence.existingClaim A manually managed Persistent Volume Claim
+  ## If defined, PVC must be created manually before volume will be bound
+  ##
+  existingClaim: ""
+  ## @param persistence.hostPath If defined, the drupal-data volume will mount to the specified hostPath.
+  hostPath: "/drupal-data"

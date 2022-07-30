@@ -7,21 +7,11 @@ replicaCount: 1
 image:
   repository: quay.io/afnan_abdelhameed/ld-ihf-edu
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
   tag: "1.0"
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
-#serviceAccount:
-#  # Specifies whether a service account should be created
-#  create: true
-#  # Annotations to add to the service account
-#  annotations: {}
-#  # The name of the service account to use.
-#  # If not set and create is true, a name is generated using the fullname template
-#  name: ""
 
 podAnnotations: {}
 
@@ -38,7 +28,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
 ingress:
   enabled: false
@@ -86,13 +76,16 @@ mysql:
   auth:
     database: ihf-education
     rootPassword: root
-
 #    username: edu-user
 #    password: password
+
   primary:
+    service:
+      type: NodePort
+      nodePort: 32762
     livenessProbe:
       initialDelaySeconds: 600
-  fullnameOverride: ihf-edu-mysql
+  fullnameOverride: ihf-edu-mysql # the name that tha app will use to communicate with
 
 #  primary:
 #    service:

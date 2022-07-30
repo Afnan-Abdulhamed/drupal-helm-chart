@@ -78,7 +78,6 @@ mysql:
     rootPassword: root
 #    username: edu-user
 #    password: password
-
   primary:
     service:
       type: NodePort
@@ -86,6 +85,12 @@ mysql:
     livenessProbe:
       initialDelaySeconds: 600
   fullnameOverride: ihf-edu-mysql # the name that tha app will use to communicate with
+  securityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
+  volumePermissions:
+    enabled: false
 
 #  primary:
 #    service:

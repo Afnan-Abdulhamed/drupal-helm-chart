@@ -6,7 +6,7 @@ metadata:
     {{- include "drupal.labels" . | nindent 4 }}
 spec:
   accessModes:
-    - {{ .Values.persistence.accessMode | quote }}
+    - {{ .Values.persistence.accessModes | quote }}
   capacity:
     storage: {{ .Values.persistence.size | quote }}
   hostPath:

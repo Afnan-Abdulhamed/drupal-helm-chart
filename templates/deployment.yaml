@@ -53,7 +53,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
           - mountPath: /var/www
-            name: drupal-datas
+            name: drupal-data
       volumes:
         - name: drupal-data
           {{- if .Values.persistence.enabled }}

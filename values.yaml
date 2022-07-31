@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   repository: quay.io/afnan_abdelhameed/ld-ihf-edu
   pullPolicy: IfNotPresent
-  tag: "1.0"
+  tag: "2.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -144,4 +144,4 @@ persistence:
   ##
   existingClaim: ""
   ## @param persistence.hostPath If defined, the drupal-data volume will mount to the specified hostPath.
-  hostPath: "/drupal-data"
+  hostPath: "/drupal-data" #The directory in your node.

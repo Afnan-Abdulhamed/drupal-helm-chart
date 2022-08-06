@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   repository: quay.io/afnan_abdelhameed/ld-ihf-edu
   pullPolicy: IfNotPresent
-  tag: "2.0"
+  tag: "3.0"
 
 imagePullSecrets: []
 nameOverride: ""

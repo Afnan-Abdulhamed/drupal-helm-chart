@@ -54,6 +54,7 @@ spec:
           volumeMounts:
           - mountPath: /opt/app-root/src
             name: drupal-data
+            subPath: src
       volumes:
         - name: drupal-data
           {{- if .Values.persistence.enabled }}

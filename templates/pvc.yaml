@@ -6,7 +6,7 @@ metadata:
     {{- include "drupal.labels" . | nindent 4 }}
 spec:
   {{- if .Values.persistence.hostPath }}
-  storageClassName: "nfs-storage"
+  storageClassName: "ihf-edu"
   {{- end }}
   accessModes:
   {{- if not (empty .Values.persistence.accessModes) }}

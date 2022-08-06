@@ -130,7 +130,7 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  storageClass: "nfs-storage"
+  storageClass: "ihf-edu"
   ## @param persistence.accessModes PVC Access Mode for Drupal volume
   ## If defined, PVC must be created manually before volume will be bound
   ##
